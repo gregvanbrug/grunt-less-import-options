@@ -16,6 +16,8 @@ module.exports = function(grunt) {
 
     var options = this.options({ });
 
+    var validOptions = [ 'reference', 'inline', 'less', 'css', 'once', 'multiple' ];
+
     var src  = this.files[0].src;
     var dest = this.files[0].dest;
 
@@ -53,7 +55,11 @@ module.exports = function(grunt) {
     // Handle Options
     if (options) {
       _.forEach(options, function(files, option) {
-        createImport(files, option);
+        if ( _.contains(validOptions, option) ) {
+          createImport(files, option);
+        } else {
+          grunt.fail.warn( option.red + ' is not a valid Less Import Option.'.red );
+        }
       });
     }
 
