@@ -39,27 +39,39 @@ For further documentation on the options see:
 [http://lesscss.org/features/#import-options](http://lesscss.org/features/#import-options).
 
 #### options.reference
+
 Type: `String | Array`
+
 Default value: null
 
 #### options.inline
+
 Type: `String | Array`
+
 Default value: null
 
 #### options.less
+
 Type: `String | Array`
+
 Default value: null
 
 #### options.css
+
 Type: `String | Array`
+
 Default value: null
 
 #### options.once
+
 Type: `String | Array`
+
 Default value: null
 
 #### options.multiple
+
 Type: `String | Array`
+
 Default value: null
 
 ### Usage Examples
@@ -80,7 +92,7 @@ less_import_options: {
 less_import_options: {
   options: {
     reference: ['file.less', 'otherfile.less'],
-    reference: ['file.less', 'otherfile.less']
+    inline: ['file.less', 'otherfile.less']
   },
   files: {
     dest: 'dest/styles.less'
