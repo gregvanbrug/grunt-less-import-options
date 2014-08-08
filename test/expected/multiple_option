@@ -1,0 +1,4 @@
+@import (multiple) "test/fixtures/testing.less";
+@import (multiple) "test/fixtures/123.less";
+@import (multiple) "test/fixtures/testing.less";
+@import (multiple) "test/fixtures/123.less";

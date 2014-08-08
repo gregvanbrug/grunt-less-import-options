@@ -1,0 +1,48 @@
+{
+  "name": "grunt-less-import-options",
+  "description": "Create @imports based on Less Import Options.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/gregvanbrug/grunt-less-import-options",
+  "author": {
+    "name": "Greg van Brug",
+    "email": "greg.vanbrug@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gregvanbrug/grunt-less-import-options.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gregvanbrug/grunt-less-import-options/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/gregvanbrug/grunt-less-import-options/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-less": "^0.11.4",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5",
+    "matchdep": "~0.3.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin",
+    "less",
+    "import"
+  ]
+}

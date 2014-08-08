@@ -1,0 +1,7 @@
+@import "test/fixtures/testing.less";
+@import (reference) "test/fixtures/testing.less";
+@import (inline) "test/fixtures/testing.less";
+@import (less) "test/fixtures/testing.less";
+@import (css) "test/fixtures/testing.less";
+@import (once) "test/fixtures/testing.less";
+@import (multiple) "test/fixtures/testing.less";

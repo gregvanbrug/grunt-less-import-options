@@ -1,0 +1,2 @@
+@import (css) "test/fixtures/testing.less";
+@import (css) "test/fixtures/123.less";

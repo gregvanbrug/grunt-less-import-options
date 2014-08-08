@@ -1,0 +1,2 @@
+@import (reference) "test/fixtures/testing.less";
+@import (reference) "test/fixtures/123.less";
