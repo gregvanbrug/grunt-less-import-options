@@ -45,13 +45,6 @@ module.exports = function(grunt) {
 
     };
 
-    // Default
-    if (src) {
-      this.files.forEach( function(file) {
-        createImport(file, null);
-      });
-    }
-
     // Handle Options
     if (options) {
       _.forEach(options, function(files, option) {
@@ -60,6 +53,13 @@ module.exports = function(grunt) {
         } else {
           grunt.fail.warn( option.red + ' is not a valid Less Import Option.'.red );
         }
+      });
+    }
+
+    // Default
+    if (src) {
+      this.files.forEach( function(file) {
+        createImport(file, null);
       });
     }
 
