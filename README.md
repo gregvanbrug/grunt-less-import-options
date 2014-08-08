@@ -1,4 +1,4 @@
-# grunt-less-import-options
+# grunt-less-import-options [![Build Status](https://travis-ci.org/gregvanbrug/grunt-less-import-options.svg?branch=master)](https://travis-ci.org/gregvanbrug/grunt-less-import-options)
 
 > Import Less files using [Less Import Options](http://lesscss.org/features/#import-options).
 
