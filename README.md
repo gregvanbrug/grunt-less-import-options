@@ -42,37 +42,25 @@ For further documentation on the options see:
 
 Type: `String | Array`
 
-Default value: null
-
 #### options.inline
 
 Type: `String | Array`
-
-Default value: null
 
 #### options.less
 
 Type: `String | Array`
 
-Default value: null
-
 #### options.css
 
 Type: `String | Array`
-
-Default value: null
 
 #### options.once
 
 Type: `String | Array`
 
-Default value: null
-
 #### options.multiple
 
 Type: `String | Array`
-
-Default value: null
 
 ### Usage Examples
 

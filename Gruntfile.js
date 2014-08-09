@@ -82,6 +82,12 @@ module.exports = function(grunt) {
         },
         src: 'test/fixtures/testing.less',
         dest: 'tmp/all_options.less'
+      },
+      option_as_string: {
+        options: {
+          reference: 'test/fixtures/testing.less'
+        },
+        dest: 'tmp/option_as_string.less'
       }
     },
 

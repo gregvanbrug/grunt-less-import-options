@@ -99,4 +99,13 @@ exports.less_import_options = {
 
     test.done();
   },
+  option_as_string: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/option_as_string.less');
+    var expected = grunt.file.read('test/expected/option_as_string');
+    test.equal(actual, expected, 'Should create an @import based on a string');
+
+    test.done();
+  },
 };

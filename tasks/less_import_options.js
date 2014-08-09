@@ -34,9 +34,13 @@ module.exports = function(grunt) {
       };
 
       if (options) {
-        _.forEach(files, function(file) {
-          output += template(file, options);
-        });
+        if ( typeof files === 'string' ) {
+          output += template(files, options);
+        } else {
+          _.forEach(files, function(file) {
+            output += template(file, options);
+          });
+        }
       } else {
         files.src.forEach( function(file) {
           output += template(file);
