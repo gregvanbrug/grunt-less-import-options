@@ -18,54 +18,57 @@ module.exports = function(grunt) {
 
     var validOptions = [ 'reference', 'inline', 'less', 'css', 'once', 'multiple' ];
 
-    var src  = this.files[0].src;
-    var dest = this.files[0].dest;
+    // Verify the provided Options are Valid Imports Options
+    _.forEach(options, function(files, option) {
+      if ( !_.contains(validOptions, option) ) {
+        grunt.fail.warn( option.red + ' is not a valid Less Import Option.'.red );
+      }
+    });
+
+    var src  = this.files[0].src,
+        dest = this.files[0].dest;
 
     var output = '';
 
-    var createImport = function(files, options) {
+    var imports = {};
 
-      var template = function(path, option) {
-        if (option) {
-          return '@import (' + option + ') "' + path + '";\n';
-        } else {
-          return '@import "' + path + '";\n';
-        }
-      };
+    var template = function(path, option) {
 
-      if (options) {
-        if ( typeof files === 'string' ) {
-          output += template(files, options);
-        } else {
-          _.forEach(files, function(file) {
-            output += template(file, options);
-          });
-        }
-      } else {
-        files.src.forEach( function(file) {
-          output += template(file);
-        });
-      }
+      var defaultTemplate = '@import "' + path + '";\n',
+          optionsTemplate = '@import (' + option + ') "' + path + '";\n';
+
+      return option === 'default' ? defaultTemplate : optionsTemplate;
 
     };
 
-    // Handle Options
-    if (options) {
-      _.forEach(options, function(files, option) {
-        if ( _.contains(validOptions, option) ) {
-          createImport(files, option);
-        } else {
-          grunt.fail.warn( option.red + ' is not a valid Less Import Option.'.red );
-        }
+    var createImports = function(files, options) {
+
+      var paths = options ? files : files.src;
+
+      if (typeof paths === 'string') {
+        paths = [ paths ];
+      }
+
+      _.forEach(paths, function(path) {
+        output += template(path, options);
       });
+
+    };
+
+    // Handle the Options
+    for (var option in options) {
+      imports[option] = options[option];
     }
 
-    // Default
+    // Add the Defaults
     if (src) {
-      this.files.forEach( function(file) {
-        createImport(file, null);
-      });
+      imports['default'] = src;
     }
+
+    // Create all the @imports
+    _.forEach(imports, function(file, option) {
+      createImports(file, option);
+    });
 
     // Get 'er done.
     grunt.file.write( dest, output );

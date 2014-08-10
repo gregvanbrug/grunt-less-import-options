@@ -1,7 +1,7 @@
 {
   "name": "grunt-less-import-options",
   "description": "Create @imports based on Less Import Options.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/gregvanbrug/grunt-less-import-options",
   "author": {
     "name": "Greg van Brug",
