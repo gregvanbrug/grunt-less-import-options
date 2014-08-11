@@ -10,8 +10,6 @@ module.exports = function(grunt) {
 
   'use strict';
 
-  var _ = require('lodash');
-
   grunt.registerMultiTask('less_import_options', 'Import Less files using Less Import Options', function() {
 
     var options = this.options({ });
@@ -19,11 +17,11 @@ module.exports = function(grunt) {
     var validOptions = [ 'reference', 'inline', 'less', 'css', 'once', 'multiple' ];
 
     // Verify the provided Options are Valid Imports Options
-    _.forEach(options, function(files, option) {
-      if ( !_.contains(validOptions, option) ) {
+    for (var option in options) {
+      if ( validOptions.indexOf( option ) === -1 ) {
         grunt.fail.warn( option.red + ' is not a valid Less Import Option.'.red );
       }
-    });
+    }
 
     var src  = this.files[0].src,
         dest = this.files[0].dest;
@@ -32,32 +30,30 @@ module.exports = function(grunt) {
 
     var imports = {};
 
-    var template = function(path, option) {
+    var template = function(path, importType) {
 
       var defaultTemplate = '@import "' + path + '";\n',
-          optionsTemplate = '@import (' + option + ') "' + path + '";\n';
+          optionsTemplate = '@import (' + importType + ') "' + path + '";\n';
 
-      return option === 'default' ? defaultTemplate : optionsTemplate;
+      return importType === 'default' ? defaultTemplate : optionsTemplate;
 
     };
 
-    var createImports = function(files, options) {
+    var createImports = function(files, importType) {
 
-      var paths = options ? files : files.src;
-
-      if (typeof paths === 'string') {
-        paths = [ paths ];
+      if (typeof files === 'string') {
+        files = [ files ];
       }
 
-      _.forEach(paths, function(path) {
-        output += template(path, options);
+      files.forEach(function(file) {
+        output += template(file, importType);
       });
 
     };
 
     // Handle the Options
-    for (var option in options) {
-      imports[option] = options[option];
+    for (var importType in options) {
+      imports[importType] = options[importType];
     }
 
     // Add the Defaults
@@ -66,9 +62,9 @@ module.exports = function(grunt) {
     }
 
     // Create all the @imports
-    _.forEach(imports, function(file, option) {
-      createImports(file, option);
-    });
+    for (var lessImport in imports) {
+      createImports(imports[lessImport], lessImport);
+    }
 
     // Get 'er done.
     grunt.file.write( dest, output );

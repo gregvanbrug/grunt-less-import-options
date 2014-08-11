@@ -35,6 +35,12 @@ module.exports = function(grunt) {
           'tmp/default.less': ['test/fixtures/testing.less', 'test/fixtures/123.less']
         }
       },
+      // invalid_option: {
+      //   options: {
+      //     slayer: ['test/fixtures/testing.less', 'test/fixtures/123.less']
+      //   },
+      //   dest: 'tmp/invalid_option.less'
+      // },
       reference_option: {
         options: {
           reference: ['test/fixtures/testing.less', 'test/fixtures/123.less']
