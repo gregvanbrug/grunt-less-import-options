@@ -62,6 +62,8 @@ Type: `String | Array`
 
 Type: `String | Array`
 
+* As of 0.1.6, options may also be globbed -- file patterns beginning with ! will be ignored.
+
 ### Usage Examples
 
 #### Default Options

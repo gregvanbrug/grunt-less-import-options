@@ -36,6 +36,15 @@ exports.less_import_options = {
 
     test.done();
   },
+  default_glob: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/default_glob.less');
+    var expected = grunt.file.read('test/expected/default_glob');
+    test.equal(actual, expected, 'Should create the default @import with a glob');
+
+    test.done();
+  },
   reference_option: function(test) {
     test.expect(1);
 
@@ -108,4 +117,22 @@ exports.less_import_options = {
 
     test.done();
   },
+  option_glob: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/option_glob.less');
+    var expected = grunt.file.read('test/expected/option_glob');
+    test.equal(actual, expected, 'Should create an @imports for globbed options');
+
+    test.done();
+  },
+  option_glob_ignore: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/option_glob_ignore.less');
+    var expected = grunt.file.read('test/expected/option_glob_ignore');
+    test.equal(actual, expected, 'Should create an @imports for globbed options and ignore ! prefix');
+
+    test.done();
+  }
 };

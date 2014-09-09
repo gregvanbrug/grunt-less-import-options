@@ -35,6 +35,11 @@ module.exports = function(grunt) {
           'tmp/default.less': ['test/fixtures/testing.less', 'test/fixtures/123.less']
         }
       },
+      default_glob: {
+        files: {
+          'tmp/default_glob.less': ['test/fixtures/*.less']
+        }
+      },
       // invalid_option: {
       //   options: {
       //     slayer: ['test/fixtures/testing.less', 'test/fixtures/123.less']
@@ -94,6 +99,18 @@ module.exports = function(grunt) {
           reference: 'test/fixtures/testing.less'
         },
         dest: 'tmp/option_as_string.less'
+      },
+      option_glob: {
+        options: {
+          reference: 'test/fixtures/*.less'
+        },
+        dest: 'tmp/option_glob.less'
+      },
+      option_glob_ignore: {
+        options: {
+          reference: [ 'test/fixtures/*.less', '!test/fixtures/123.less' ]
+        },
+        dest: 'tmp/option_glob_ignore.less'
       }
     },
 
@@ -136,6 +153,16 @@ module.exports = function(grunt) {
       all_options: {
         files: {
           'tmp/all_options.css': 'tmp/all_options.less'
+        }
+      },
+      option_glob: {
+        files: {
+          'tmp/option_glob.css': 'tmp/option_glob.less'
+        }
+      },
+      option_glob_ignore: {
+        files: {
+          'tmp/option_glob_ignore.css': 'tmp/option_glob_ignore.less'
         }
       }
     },

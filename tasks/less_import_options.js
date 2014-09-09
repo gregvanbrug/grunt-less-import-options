@@ -12,6 +12,8 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('less_import_options', 'Import Less files using Less Import Options', function() {
 
+    var globule = require('globule');
+
     var options = this.options({ });
 
     var validOptions = [ 'reference', 'inline', 'less', 'css', 'once', 'multiple' ];
@@ -51,9 +53,18 @@ module.exports = function(grunt) {
 
     };
 
-    // Handle the Options
+    var isGlob = function(option) {
+      var regex = new RegExp(/([*!])/g);
+      return regex.test(option);
+    };
+
     for (var importType in options) {
-      imports[importType] = options[importType];
+      if ( isGlob(options[importType]) ) {
+        var filepaths = globule.find(options[importType]);
+        imports[importType] = filepaths;
+      } else {
+        imports[importType] = options[importType];
+      }
     }
 
     // Add the Defaults
